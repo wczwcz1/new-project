@@ -1,0 +1,20 @@
+
+    import random
+    import string
+
+    def generate_password(length=12):
+        """生成一个包含大小写字母、数字和特殊字符的随机密码"""
+        characters = string.ascii_letters + string.digits + string.punctuation
+        password = ''.join(random.choice(characters) for _ in range(length))
+        return password
+
+    if __name__ == "__main__":
+        print("=== 简易密码生成器 ===")
+        try:
+            length = int(input("请输入需要的密码长度 (默认 12): ") or 12)
+            if length < 4:
+                print("警告：为了安全起见，密码长度建议至少为 4 位。")
+            else:
+                print(f"生成的密码是: {generate_password(length)}")
+        except ValueError:
+            print("输入无效，请输入一个数字。")
